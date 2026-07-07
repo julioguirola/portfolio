@@ -1,17 +1,38 @@
 ---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Experience from '../components/sections/Experience.astro';
+import Education from '../components/sections/Education.astro';
+import Skills from '../components/sections/Skills.astro';
+import Contact from '../components/sections/Contact.astro';
 
+const experience = await getCollection('experience');
+const education = await getCollection('education');
+const skills = await getCollection('skills');
+
+experience.sort((a, b) => {
+  const aEnd = a.data.endDate ?? '9999';
+  const bEnd = b.data.endDate ?? '9999';
+  return bEnd.localeCompare(aEnd) || b.data.startDate.localeCompare(a.data.startDate);
+});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Julio Alberto Guirola Alvarado — Desarrollador Backend"
+  description="Ingeniero en Ciencias Informáticas especializado en desarrollo backend con Node.js, Go y arquitecturas escalables en la nube. Más de cinco años de experiencia."
+>
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Experience experiences={experience} />
+    <Education education={education} />
+    <Skills skills={skills} />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

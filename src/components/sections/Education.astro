@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Props {
+  education: CollectionEntry<'education'>[];
+}
+
+const { education } = Astro.props;
+---
+
+<section id="educacion" class="py-20 bg-surface">
+  <div class="mx-auto max-w-5xl px-6">
+    <SectionHeading tag="03 — formación" title="Educación" />
+
+    {education.map((ed) => (
+      <article class="relative pl-0 sm:pl-10">
+        <div class="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-accent-secondary border-2 border-surface hidden sm:block" aria-hidden="true"></div>
+
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+          <div>
+            <h3 class="font-display text-xl font-bold text-text">
+              {ed.data.degree}
+            </h3>
+            <p class="font-medium text-text-muted">
+              {ed.data.institution}
+            </p>
+          </div>
+          <time class="font-mono text-xs text-text-muted whitespace-nowrap">
+            {ed.data.period}
+          </time>
+        </div>
+
+        <p class="text-sm text-accent-secondary font-medium mb-4">
+          {ed.data.distinction}
+        </p>
+
+        <div>
+          <p class="text-sm text-text-muted mb-2 font-medium">Formación relevante:</p>
+          <ul class="flex flex-wrap gap-2">
+            {ed.data.highlights.map((h) => (
+              <li class="font-mono text-xs text-text-muted bg-bg-alt px-2.5 py-1 rounded-md border border-border">
+                {h}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

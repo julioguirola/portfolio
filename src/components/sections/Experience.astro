@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Badge from '../ui/Badge.astro';
+
+interface Props {
+  experiences: CollectionEntry<'experience'>[];
+}
+
+const { experiences } = Astro.props;
+---
+
+<section id="experiencia" class="py-20">
+  <div class="mx-auto max-w-5xl px-6">
+    <SectionHeading tag="02 — trayectoria" title="Experiencia laboral" />
+
+    <div class="relative">
+      <div class="absolute left-[7px] top-2 bottom-2 w-px bg-border hidden sm:block" aria-hidden="true"></div>
+
+      <div class="space-y-12">
+        {experiences.map((exp) => (
+          <article class="relative pl-0 sm:pl-10">
+            <div class="absolute left-[3px] top-1.5 w-[9px] h-[9px] rounded-full bg-accent border-2 border-bg hidden sm:block" aria-hidden="true"></div>
+
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+              <div>
+                <h3 class="font-display text-xl font-bold text-text">
+                  {exp.data.role}
+                </h3>
+                <p class="font-medium text-text-muted">
+                  {exp.data.company}
+                  <span class="text-border mx-2" aria-hidden="true">·</span>
+                  <span class="text-sm">{exp.data.location}</span>
+                </p>
+              </div>
+              <div class="flex items-center gap-3">
+                <Badge variant={exp.data.focus} />
+                <time class="font-mono text-xs text-text-muted whitespace-nowrap">
+                  {exp.data.startDate} — {exp.data.endDate ?? 'actualidad'}
+                </time>
+              </div>
+            </div>
+
+            <p class="text-text-muted text-sm leading-relaxed mb-4">
+              {exp.data.summary}
+            </p>
+
+            <ul class="space-y-2">
+              {exp.data.highlights.map((h) => (
+                <li class="flex items-start gap-2 text-sm text-text-muted">
+                  <span class="mt-[5px] block w-1.5 h-1.5 rounded-full bg-accent-secondary shrink-0" aria-hidden="true"></span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

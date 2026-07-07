@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Página no encontrada — [Nombre Apellido]"
+  description="La página que buscas no existe."
+>
+  <main class="min-h-screen flex items-center justify-center px-6">
+    <div class="text-center max-w-md">
+      <div class="font-mono text-8xl font-bold text-accent/20 mb-4">404</div>
+      <h1 class="font-display text-2xl font-bold text-text mb-2">Página no encontrada</h1>
+      <p class="text-text-muted mb-8">
+        La ruta que intentas acceder no existe o fue movida.
+      </p>
+      <Button href="/" variant="primary">Volver al inicio</Button>
+    </div>
+  </main>
+</BaseLayout>

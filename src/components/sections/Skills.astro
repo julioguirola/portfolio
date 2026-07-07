@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Props {
+  skills: CollectionEntry<'skills'>[];
+}
+
+const { skills } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  backend: 'Backend',
+  frontend: 'Frontend',
+  devops: 'DevOps & Cloud',
+  database: 'Bases de datos',
+  other: 'Otras herramientas',
+};
+
+const categoryOrder = ['backend', 'devops', 'database', 'frontend', 'other'];
+
+const grouped: Record<string, CollectionEntry<'skills'>[]> = {};
+for (const skill of skills) {
+  const cat = skill.data.category;
+  if (!grouped[cat]) grouped[cat] = [];
+  grouped[cat].push(skill);
+}
+
+const sortedEntries = Object.entries(grouped).sort(
+  ([a], [b]) => categoryOrder.indexOf(a) - categoryOrder.indexOf(b)
+);
+---
+
+<section id="habilidades" class="py-20">
+  <div class="mx-auto max-w-5xl px-6">
+    <SectionHeading tag="04 — stack" title="Habilidades técnicas" />
+
+    <div class="flex flex-wrap gap-10">
+      {sortedEntries.map(([category, items]) => (
+        <div>
+          <h3 class="font-display text-lg font-semibold text-text mb-4">
+            {categoryLabels[category] ?? category}
+          </h3>
+          <ul class="space-y-2">
+            {items.map((skill) => (
+              <li class="flex items-center gap-3 text-sm text-text-muted">
+                <span class="block w-1.5 h-1.5 rounded-full bg-accent/40 shrink-0" aria-hidden="true"></span>
+                <span class="font-mono text-text">{skill.data.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

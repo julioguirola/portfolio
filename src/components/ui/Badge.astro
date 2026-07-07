@@ -1,0 +1,23 @@
+---
+export interface Props {
+  variant: 'backend' | 'fullstack' | 'devops';
+}
+
+const labelMap: Record<string, string> = {
+  backend: 'Backend',
+  fullstack: 'Fullstack',
+  devops: 'DevOps',
+};
+
+const colorMap: Record<string, string> = {
+  backend: 'bg-accent/10 text-accent border-accent/20',
+  fullstack: 'bg-accent-secondary/10 text-accent-secondary border-accent-secondary/20',
+  devops: 'bg-[#7C3AED]/10 text-[#7C3AED] border-[#7C3AED]/20',
+};
+
+const { variant } = Astro.props;
+---
+
+<span class={`inline-block font-mono text-[0.7rem] font-medium px-2.5 py-0.5 rounded-full border ${colorMap[variant]}`}>
+  {labelMap[variant]}
+</span>

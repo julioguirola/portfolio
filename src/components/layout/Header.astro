@@ -1,0 +1,28 @@
+---
+const navItems = [
+  { label: 'Experiencia', href: '#experiencia' },
+  { label: 'Educación', href: '#educacion' },
+  { label: 'Habilidades', href: '#habilidades' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
+  <nav class="mx-auto max-w-5xl px-6 h-16 flex items-center justify-between" aria-label="Navegación principal">
+    <a href="/" class="font-display font-bold text-lg text-accent hover:text-accent-hover transition-colors">
+      JG<span class="text-text-muted">.dev</span>
+    </a>
+    <ul class="flex items-center gap-8">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="text-sm font-medium text-text-muted hover:text-text transition-colors"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

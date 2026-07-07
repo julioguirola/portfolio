@@ -1,0 +1,32 @@
+[
+  {
+    "id": "xetid-backend",
+    "company": "Xetid",
+    "role": "Desarrollador Backend",
+    "startDate": "2024",
+    "endDate": null,
+    "location": "Cuba",
+    "summary": "Desarrollo y mantenimiento de software empresarial de alta escalabilidad, orientado a sistemas críticos de negocio.",
+    "highlights": [
+      "Diseño y desarrollo de servicios backend para sistemas empresariales de gran escala.",
+      "Trabajo en arquitecturas orientadas al rendimiento y la mantenibilidad a largo plazo.",
+      "Colaboración con equipos multidisciplinarios bajo estándares profesionales de calidad de software."
+    ],
+    "focus": "backend"
+  },
+  {
+    "id": "enpa-fullstack",
+    "company": "ENPA",
+    "role": "Desarrollador Fullstack",
+    "startDate": "2025",
+    "endDate": null,
+    "location": "Cuba",
+    "summary": "Desarrollo integral de software para la gestión agrícola, cubriendo frontend, backend, bases de datos y automatización de despliegues.",
+    "highlights": [
+      "Desarrollo fullstack de soluciones de gestión agrícola, desde la interfaz de usuario hasta la capa de datos.",
+      "Diseño y administración de bases de datos para sistemas de gestión.",
+      "Implementación de procesos DevOps para automatizar el ciclo de despliegue."
+    ],
+    "focus": "fullstack"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "unica-degree",
+    "degree": "Ingeniería Informática",
+    "institution": "Universidad de Ciego de Ávila \"Máximo Gómez Báez\"",
+    "distinction": "Título de Oro — máxima distinción académica",
+    "period": "2023 — 2026",
+    "startYear": 2023,
+    "endYear": 2026,
+    "highlights": [
+      "Álgebra",
+      "Programación",
+      "Bases de Datos",
+      "Estructuras de Datos",
+      "Matemática Discreta y Computacional"
+    ]
+  }
+]
