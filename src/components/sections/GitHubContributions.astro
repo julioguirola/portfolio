@@ -20,11 +20,10 @@ const monthNames = [
   'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
 ];
 
-// Calculate month labels for each week
 const monthLabels = [];
 if (weeks.length > 0) {
   let lastMonth = -1;
-  weeks.forEach((week, index) => {
+  weeks.forEach((week) => {
     const date = new Date(week[0].date);
     const month = date.getMonth();
     if (month !== lastMonth) {
@@ -39,7 +38,7 @@ if (weeks.length > 0) {
 
 <section id="github-contributions" class="py-8 sm:py-20 bg-surface">
   <div class="mx-auto max-w-5xl px-4 sm:px-6">
-    <SectionHeading tag="02.1 — actividad" title="Contribuciones en GitHub" />
+    <SectionHeading tag="actividad" title="Contribuciones en GitHub" />
 
     <div class="flex flex-col items-center gap-8">
       <div class="text-center max-w-2xl">
@@ -48,35 +47,35 @@ if (weeks.length > 0) {
         </p>
       </div>
 
-      <div class="w-full overflow-x-auto pb-2 flex justify-start sm:justify-center">
-        <div class="relative">
+      <div class="w-full overflow-x-auto sm:overflow-visible pb-2 flex justify-start sm:justify-center">
+        <div class="github-grid" style={`--cols: ${weeks.length};`}>
           <!-- Month Labels -->
-          <div class="flex mb-1 ml-0 sm:ml-8" style={`width: calc(${weeks.length} * 0.625rem + ${weeks.length - 1} * 0.125rem);`}>
+          <div class="flex mb-1 sm:ml-8" style="width: calc(var(--cols) * var(--cell) + (var(--cols) - 1) * var(--gap));">
             {monthLabels.map((month) => (
-              <div class="text-[8px] sm:text-[10px] text-text-muted font-medium shrink-0" style={`width: 0.625rem; margin-right: 0.125rem;`}>
+              <div class="month-label shrink-0" style="width: var(--cell); margin-right: var(--gap);">
                 {month}
               </div>
             ))}
           </div>
 
-          <div class="flex gap-1 sm:gap-2">
+          <div class="flex" style="gap: var(--gap);">
             <!-- Day Labels -->
-            <div class="flex flex-col justify-between py-1 shrink-0" style="height: calc(7 * 0.625rem + 6 * 0.125rem);">
+            <div class="flex flex-col justify-between py-1 shrink-0" style="height: calc(7 * var(--cell) + 6 * var(--gap));">
               {dayLabels.map((day) => (
-                <div class="text-[8px] sm:text-[10px] text-text-muted font-medium flex items-center shrink-0" style="height: 0.625rem;">
+                <div class="day-label flex items-center shrink-0" style="height: var(--cell);">
                   {day}
                 </div>
               ))}
             </div>
 
             <!-- Contribution Grid -->
-            <div class="grid gap-0.5 sm:gap-1" style={`grid-template-columns: repeat(${weeks.length}, minmax(0, 1fr));`}>
+            <div class="grid gap-[var(--gap)]" style={`grid-template-columns: repeat(${weeks.length}, minmax(0, 1fr));`}>
               {weeks.map((week) => (
-                <div class="flex flex-col gap-0.5 sm:gap-1">
+                <div class="flex flex-col" style="gap: var(--gap);">
                   {week.map((day) => (
                     <div
-                      class="w-[0.625rem] h-[0.625rem] sm:w-4 sm:h-4 rounded-sm transition-colors duration-200 hover:ring-2 hover:ring-offset-1 hover:ring-accent cursor-pointer relative group shrink-0"
-                      style={`background-color: ${day.color}`}
+                      class="cell rounded-sm transition-colors duration-200 hover:ring-2 hover:ring-offset-1 hover:ring-accent cursor-pointer relative group"
+                      style={`background-color: ${day.color}; width: var(--cell); height: var(--cell);`}
                       title={`${day.contributionCount} contribuciones el ${day.date}`}
                     >
                       <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-text text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
@@ -94,11 +93,11 @@ if (weeks.length > 0) {
       <div class="flex items-center gap-2 text-[10px] sm:text-xs text-text-muted font-mono">
         <span>Menos</span>
         <div class="flex gap-0.5 sm:gap-1">
-          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #ebedf0"></div>
-          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #9be9a8"></div>
-          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #40c463"></div>
-          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #30a14e"></div>
-          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #216e39"></div>
+          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #ebedf0;"></div>
+          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #9be9a8;"></div>
+          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #40c463;"></div>
+          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #30a14e;"></div>
+          <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-sm" style="background-color: #216e39;"></div>
         </div>
         <span>Más</span>
       </div>
@@ -107,7 +106,39 @@ if (weeks.length > 0) {
 </section>
 
 <style>
-  .grid {
-    display: grid;
+  .github-grid {
+    --cell: 0.625rem;
+    --gap: 0.125rem;
+  }
+
+  .month-label {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--color-text-muted);
+  }
+
+  .day-label {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--color-text-muted);
+  }
+
+  .cell {
+    background-color: #ebedf0;
+  }
+
+  @media (min-width: 640px) {
+    .github-grid {
+      --cell: 1rem;
+      --gap: 0.25rem;
+    }
+
+    .month-label {
+      font-size: 10px;
+    }
+
+    .day-label {
+      font-size: 10px;
+    }
   }
 </style>
