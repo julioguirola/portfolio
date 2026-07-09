@@ -9,6 +9,7 @@ import Experience from '../components/sections/Experience.astro';
 import Education from '../components/sections/Education.astro';
 import Skills from '../components/sections/Skills.astro';
 import Contact from '../components/sections/Contact.astro';
+import GitHubContributions from '../components/sections/GitHubContributions.astro';
 
 const experience = await getCollection('experience');
 const education = await getCollection('education');
@@ -30,6 +31,7 @@ experience.sort((a, b) => {
     <Hero />
     <About />
     <Experience experiences={experience} />
+    <GitHubContributions />
     <Education education={education} />
     <Skills skills={skills} />
     <Contact />
