@@ -37,7 +37,7 @@ if (weeks.length > 0) {
 }
 ---
 
-<section id="github-contributions" class="py-16 sm:py-20 bg-surface">
+<section id="github-contributions" class="py-8 sm:py-20 bg-surface">
   <div class="mx-auto max-w-5xl px-4 sm:px-6">
     <SectionHeading tag="02.1 — actividad" title="Contribuciones en GitHub" />
 
@@ -48,12 +48,12 @@ if (weeks.length > 0) {
         </p>
       </div>
 
-      <div class="w-full overflow-x-auto pb-2 flex justify-center">
+      <div class="w-full overflow-x-auto pb-2 flex justify-start sm:justify-center">
         <div class="relative">
           <!-- Month Labels -->
-          <div class="flex mb-1 ml-6 sm:ml-8" style={`width: calc(${weeks.length} * 0.625rem + ${weeks.length - 1} * 0.125rem);`}>
+          <div class="flex mb-1 ml-0 sm:ml-8" style={`width: calc(${weeks.length} * 0.625rem + ${weeks.length - 1} * 0.125rem);`}>
             {monthLabels.map((month) => (
-              <div class="text-[8px] sm:text-[10px] text-text-muted font-medium" style={`width: 0.625rem; margin-right: 0.125rem;`}>
+              <div class="text-[8px] sm:text-[10px] text-text-muted font-medium shrink-0" style={`width: 0.625rem; margin-right: 0.125rem;`}>
                 {month}
               </div>
             ))}
@@ -61,9 +61,9 @@ if (weeks.length > 0) {
 
           <div class="flex gap-1 sm:gap-2">
             <!-- Day Labels -->
-            <div class="flex flex-col justify-between py-1" style="height: calc(7 * 0.625rem + 6 * 0.125rem);">
+            <div class="flex flex-col justify-between py-1 shrink-0" style="height: calc(7 * 0.625rem + 6 * 0.125rem);">
               {dayLabels.map((day) => (
-                <div class="text-[8px] sm:text-[10px] text-text-muted font-medium flex items-center" style="height: 0.625rem;">
+                <div class="text-[8px] sm:text-[10px] text-text-muted font-medium flex items-center shrink-0" style="height: 0.625rem;">
                   {day}
                 </div>
               ))}
@@ -75,7 +75,7 @@ if (weeks.length > 0) {
                 <div class="flex flex-col gap-0.5 sm:gap-1">
                   {week.map((day) => (
                     <div
-                      class="w-[0.625rem] h-[0.625rem] sm:w-4 sm:h-4 rounded-sm transition-colors duration-200 hover:ring-2 hover:ring-offset-1 hover:ring-accent cursor-pointer relative group"
+                      class="w-[0.625rem] h-[0.625rem] sm:w-4 sm:h-4 rounded-sm transition-colors duration-200 hover:ring-2 hover:ring-offset-1 hover:ring-accent cursor-pointer relative group shrink-0"
                       style={`background-color: ${day.color}`}
                       title={`${day.contributionCount} contribuciones el ${day.date}`}
                     >
