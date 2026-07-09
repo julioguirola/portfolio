@@ -8,11 +8,11 @@ export interface Props {
 const { id, tag, title } = Astro.props;
 ---
 
-<div id={id} class="mb-10">
-  <span class="font-mono text-xs font-medium text-accent-secondary tracking-wider uppercase">
+<div id={id} class="mb-8 sm:mb-10">
+  <span class="font-mono text-[10px] sm:text-xs font-medium text-accent-secondary tracking-wider uppercase">
     {tag}
   </span>
-  <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2 text-text">
+  <h2 class="font-display text-3xl sm:text-4xl font-bold mt-1 sm:mt-2 text-text">
     {title}
   </h2>
 </div>

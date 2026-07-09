@@ -30,11 +30,11 @@ const sortedEntries = Object.entries(grouped).sort(
 );
 ---
 
-<section id="habilidades" class="py-20 bg-surface">
-  <div class="mx-auto max-w-5xl px-6">
+<section id="habilidades" class="py-16 sm:py-20 bg-surface">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6">
     <SectionHeading tag="04 — stack" title="Habilidades técnicas" />
 
-    <div class="flex flex-wrap gap-10">
+    <div class="flex flex-col sm:flex-row sm:flex-wrap gap-6 sm:gap-10">
       {sortedEntries.map(([category, items]) => (
         <div>
           <h3 class="font-display text-lg font-semibold text-text mb-4">
