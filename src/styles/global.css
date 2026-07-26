@@ -100,3 +100,40 @@
     transform: none !important;
   }
 }
+
+/* GitHub Contributions Component */
+.github-grid {
+  --cell: 0.625rem;
+  --gap: 0.125rem;
+}
+
+.month-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--color-text-muted);
+}
+
+.day-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--color-text-muted);
+}
+
+.cell {
+  background-color: #ebedf0;
+}
+
+@media (min-width: 640px) {
+  .github-grid {
+    --cell: 1rem;
+    --gap: 0.25rem;
+  }
+
+  .month-label {
+    font-size: 10px;
+  }
+
+  .day-label {
+    font-size: 10px;
+  }
+}
