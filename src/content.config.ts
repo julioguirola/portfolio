@@ -32,7 +32,7 @@ const skills = defineCollection({
   loader: file('src/content/skills.json'),
   schema: z.object({
     name: z.string(),
-    category: z.enum(['backend', 'frontend', 'devops', 'database', 'other']),
+    category: z.enum(['backend', 'frontend', 'agentic', 'devops', 'database', 'other']),
   }),
 });
 

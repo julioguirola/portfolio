@@ -11,12 +11,13 @@ const { skills } = Astro.props;
 const categoryLabels: Record<string, string> = {
   backend: 'Backend',
   frontend: 'Frontend',
+  agentic: 'Ingeniería Agentica',
   devops: 'DevOps & Cloud',
   database: 'Bases de datos',
   other: 'Otras herramientas',
 };
 
-const categoryOrder = ['backend', 'devops', 'database', 'frontend', 'other'];
+const categoryOrder = ['backend', 'frontend', 'agentic', 'devops', 'database', 'other'];
 
 const grouped: Record<string, CollectionEntry<'skills'>[]> = {};
 for (const skill of skills) {
